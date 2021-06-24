@@ -1,3 +1,10 @@
+local Config = {}
+
+Config.items = {
+	water = {'water'},
+	soda = {'cola'}
+}
+
 RegisterNetEvent('linden_vending:purchase')
 AddEventHandler('linden_vending:purchase', function(type)
 	local xPlayer = ESX.GetPlayerFromId(source)
