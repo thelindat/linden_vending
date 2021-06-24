@@ -1,3 +1,29 @@
+local Config = {}
+Config.water = {
+	`prop_watercooler`,
+	`prop_watercooler_dark`,
+	`prop_vend_water_01`,
+	`ch_chint02_watercooler`,
+}
+
+Config.soda = {
+	`prop_vend_soda_02`,
+	`prop_vend_soda_01`,
+	`prop_food_bs_soda_01`,
+	`prop_food_cb_soda_01`,
+	`prop_food_cb_soda_02`,
+	`prop_vend_fridge01`
+}
+
+
+local Props = {}
+for k,v in pairs(Config) do
+	for key,val in pairs(v) do
+		Props[val] = k
+	end
+end
+Config = nil
+
 local entity = 0
 
 local FloatingHelpText = function(coords, text, sound, force)
@@ -15,7 +41,6 @@ local RayCast = function(playerPed, playerCoords)
 	return hit, coords, entity
 end
 
-local Props = {}
 local FindVendingMachine = function()
 	while true do
 		local sleep = 800
@@ -53,12 +78,6 @@ local FindVendingMachine = function()
 			else sleep = sleep - 400 end
 		end
 		Citizen.Wait(sleep)
-	end
-end
-
-for k,v in pairs(Config.types) do
-	for key,val in pairs(v) do
-		Props[val] = k
 	end
 end
 
