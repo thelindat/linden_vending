@@ -1,6 +1,4 @@
-local Config = {}
-
-Config.items = {
+local Items = {
 	water = {'water'},
 	soda = {'cola'}
 }
@@ -11,8 +9,8 @@ AddEventHandler('linden_vending:purchase', function(type)
 	if xPlayer then
 		local max = 0
 		if xPlayer.getAccount('money').money >= 5 then
-			for k, v in pairs(Config.items[type]) do max = max+1 end
-			local item = Config.items[type][math.random(1, max)]
+			for k, v in pairs(Items[type]) do max = max+1 end
+			local item = Items[type][math.random(1, max)]
 			if xPlayer.canCarryItem(item, 1) then
 				xPlayer.addInventoryItem(item, 1)
 				xPlayer.removeAccountMoney('money', 5)
