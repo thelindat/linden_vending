@@ -15,7 +15,6 @@ Config.soda = {
 	`prop_vend_fridge01`
 }
 
-
 local Props = {}
 for k,v in pairs(Config) do
 	for key,val in pairs(v) do
@@ -38,7 +37,7 @@ end
 local RayCast = function(playerPed, playerCoords)
 	local plyOffset = GetOffsetFromEntityInWorldCoords(playerPed, 0.0, 2.0, 0.0)
 	local ret, hit, coords, surfacenormal, entity = GetShapeTestResult(StartShapeTestRay(playerCoords.x, playerCoords.y, playerCoords.z, plyOffset.x, plyOffset.y, plyOffset.z, -1, ESX.PlayerData.ped, 0))
-	return hit, coords, entity
+	if hit and GetEntityType(entity) ~= 0 then return hit, coords, entity else return nil end
 end
 
 local FindVendingMachine = function()
