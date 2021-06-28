@@ -45,7 +45,7 @@ local FindVendingMachine = function()
 		local sleep = 800
 		local playerCoords = GetEntityCoords(ESX.PlayerData.ped)
 		local result, coords, object = RayCast(ESX.PlayerData.ped, playerCoords)
-		if object > 0 then
+		if object then
 			if #(playerCoords - coords) < 1.5 then
 				local hash = GetEntityModel(object)
 				for k,v in pairs(Props) do
